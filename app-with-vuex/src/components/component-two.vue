@@ -7,31 +7,17 @@
 </template>
 
 <script>
-import {
-  mapGetters,
-  //  mapMutations,
-  mapActions,
-} from "vuex";
+import { createNamespacedHelpers } from "vuex";
+const { mapGetters, mapActions } = createNamespacedHelpers("textModule");
 
 export default {
   name: "ComponentTwo",
   computed: {
-    // message() {
-    //   return this.$store.state.text;
-    // },
     ...mapGetters({
       message: "upperCaseText",
     }),
   },
   methods: {
-    // 1
-    // deleteText() {
-    //   const newText = this.message.slice(0, -1);
-    //   this.$store.commit("deleteText", newText);
-    // },
-    // 2
-    // ...mapMutations(["deleteText"]),
-    // 3
     ...mapActions(["deleteText"]),
   },
 };
@@ -43,7 +29,7 @@ export default {
   height: 20rem;
   padding: 2rem;
 
-  background-color: rgb(221, 241, 209);
+  background-color: rgb(211, 248, 219);
 }
 .btn {
   display: inline-block;

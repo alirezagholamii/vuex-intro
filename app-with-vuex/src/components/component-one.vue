@@ -7,30 +7,17 @@
 </template>
 
 <script>
-import {
-  mapState,
-  // mapMutations
-  mapActions,
-} from "vuex";
+import { createNamespacedHelpers } from "vuex";
+const { mapState, mapActions } = createNamespacedHelpers("textModule");
+
 export default {
   name: "ComponentOne",
   computed: {
-    // message() {
-    //   return this.$store.state.text;
-    // },
     ...mapState({
       message: "text",
     }),
   },
   methods: {
-    // 1
-    // deleteText() {
-    //   const newText = this.message.slice(0, -1);
-    //   this.$store.commit("deleteText", newText);
-    // },
-    // 2
-    // ...mapMutations(["deleteText"]),
-    // 3
     ...mapActions(["deleteText"]),
   },
 };
