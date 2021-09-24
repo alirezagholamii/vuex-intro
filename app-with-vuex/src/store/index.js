@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import deleteTextFromDB from '../api'
 
 export default createStore({
   state() {
@@ -13,12 +14,22 @@ export default createStore({
   },
 
   mutations: {
-    deleteText(state) {
-      const newValue = state.text.slice(0, -1)
+    deleteText(state, newValue) {
       state.text = newValue
     }
   },
   actions: {
+    async deleteText({ commit, state }) {
+      try {
+        const result = await deleteTextFromDB();
+        if (result === 'success') {
+          const newValue = state.text.slice(0, -1);
+          commit('deleteText', newValue)
+        }
+      } catch (e) {
+        console.log('ERROR ===> ', e);
+      }
+    }
   },
   modules: {
   }

@@ -1,12 +1,17 @@
 <template>
   <div class="container">
+    <h2>ComponentOne</h2>
     <p>{{ message }}</p>
     <button @click.prevent="deleteText" class="btn">delete</button>
   </div>
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import {
+  mapState,
+  // mapMutations
+  mapActions,
+} from "vuex";
 export default {
   name: "ComponentOne",
   computed: {
@@ -24,7 +29,9 @@ export default {
     //   this.$store.commit("deleteText", newText);
     // },
     // 2
-    ...mapMutations(['deleteText'])
+    // ...mapMutations(["deleteText"]),
+    // 3
+    ...mapActions(["deleteText"]),
   },
 };
 </script>

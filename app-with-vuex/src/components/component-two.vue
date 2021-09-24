@@ -1,12 +1,17 @@
 <template>
   <div class="container">
+    <h2>ComponentTwo</h2>
     <p>{{ message }}</p>
     <button @click.prevent="deleteText" class="btn">delete</button>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import {
+  mapGetters,
+  //  mapMutations,
+  mapActions,
+} from "vuex";
 
 export default {
   name: "ComponentTwo",
@@ -24,8 +29,10 @@ export default {
     //   const newText = this.message.slice(0, -1);
     //   this.$store.commit("deleteText", newText);
     // },
-    //2
-    ...mapMutations(["deleteText"]),
+    // 2
+    // ...mapMutations(["deleteText"]),
+    // 3
+    ...mapActions(["deleteText"]),
   },
 };
 </script>
