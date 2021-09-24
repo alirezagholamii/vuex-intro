@@ -6,26 +6,26 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
+
 export default {
   name: "ComponentTwo",
-  props: {
-    msg: String,
-  },
-  data() {
-    return {
-      message: this.msg,
-    };
-  },
-  watch: {
-    msg(value) {
-      this.message = value;
-    },
+  computed: {
+    // message() {
+    //   return this.$store.state.text;
+    // },
+    ...mapGetters({
+      message: "upperCaseText",
+    }),
   },
   methods: {
-    deleteText() {
-      this.message = this.message.slice(0, -1);
-      this.$emit("deleteText", this.message);
-    },
+    // 1
+    // deleteText() {
+    //   const newText = this.message.slice(0, -1);
+    //   this.$store.commit("deleteText", newText);
+    // },
+    //2
+    ...mapMutations(["deleteText"]),
   },
 };
 </script>

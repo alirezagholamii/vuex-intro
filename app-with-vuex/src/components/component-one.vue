@@ -6,26 +6,25 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
 export default {
   name: "ComponentOne",
-  props: {
-    msg: String,
-  },
-  data() {
-    return {
-      message: this.msg,
-    };
-  },
-  watch: {
-    msg(value) {
-      this.message = value;
-    },
+  computed: {
+    // message() {
+    //   return this.$store.state.text;
+    // },
+    ...mapState({
+      message: "text",
+    }),
   },
   methods: {
-    deleteText() {
-      this.message = this.message.slice(0, -1);
-      this.$emit("deleteText", this.message);
-    },
+    // 1
+    // deleteText() {
+    //   const newText = this.message.slice(0, -1);
+    //   this.$store.commit("deleteText", newText);
+    // },
+    // 2
+    ...mapMutations(['deleteText'])
   },
 };
 </script>
@@ -36,7 +35,7 @@ export default {
   height: 20rem;
   padding: 2rem;
 
-  background-color: azure;
+  background-color: rgb(221, 241, 209);
 }
 .btn {
   display: inline-block;
